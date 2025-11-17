@@ -1,14 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8" />
-    <title>title</title>
+    <title>Page d'accueil</title>
+    <link rel="stylesheet" href="accueil.css">
+    <script type="module" src="accueil.js" defer></script>
 </head>
+
 <body>
-    
+
+<header>
+  <button id="openMenu">☰</button>
+  <aside class="menu">
+      <button class="close">×</button>
+      <h2>Aix-Étudiants</h2>
+      <h3>Menu.</h3>
+      <hr>
+
+      <ul>
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Restaurants</p>
+                  <p class="desc">Meilleures adresses étudiantes.</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Places à visiter</p>
+                  <p class="desc">Le plus beau d'Aix-en-Provence.</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Snacks</p>
+                  <p class="desc">Le moins cher pour manger</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Activités</p>
+                  <p class="desc">Pour bien s’amuser.</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Shopping</p>
+                  <p class="desc">Boutiques et centres d’achats</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Hotels</p>
+                  <p class="desc">Dormir sur Aix-en-Provence.</p>
+              </div>
+          </li>
+      </ul>
+
+      <hr>
+
+      <ul>
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Nous contacter</p>
+                  <p class="desc">Une question ou autre ?</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Sources</p>
+                  <p class="desc">Informations, sources utilisées</p>
+              </div>
+          </li>
+      </ul>
+  </aside>
+    <dialog id="favDialog">
+        <form method="dialog">
+            <p>Le nombre chanceux est : <strong id="number"></strong></p>
+            <button>Fermer la boîte de dialogue</button>
+        </form>
+    </dialog>
+
+    <img src="" alt="">
+    <h1>ÉtudiAix</h1>
+
+    <label for="search">Recherche :</label>
+    <input id="search" type="search" placeholder="Recherchez vos activités ...">
+</header>
+ <hr>
+<main>
+    <h2>Tourisme <br> Étudiant <br> Aix-en-Provence</h2>
+    <section>
+        <article>
+            <h3>Restaurant</h3>
+            <p>Info 1</p>
+        </article>
+        <article>
+            <h3>Places</h3>
+            <p>Info 2</p>
+        </article>
+        <article>
+            <h3>Snacks</h3>
+            <p>Info 3</p>
+        </article>
+        <article>
+            <h3>Activités</h3>
+            <p>Info 4</p>
+        </article>
+        <article>
+            <h3>Shopping</h3>
+            <p>Info 5</p>
+        </article>
+        <article>
+            <h3>Hotels</h3>  
+</main>
+<hr>
+<footer>
+    <h4>Ressources</h4>
+    <h4>Explorer</h4>
+    <h4>Use cases</h4>
+</footer>
+
 </body>
 </html>
-
-    <label>Recherche :</label>
-    <input type="search" placeholder="Recherchez vos activités ...">
-    <button>OK</button>
