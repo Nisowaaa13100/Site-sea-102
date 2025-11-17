@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ÉtudiAix </title>
+    <link rel="stylesheet" href=
+</head>
+<body>
+
+    <h1>ÉtudiAix</h1>
+    <button>Menu</button>
+
+    <hr>
+
+    <h1>Lieux<br>Places à<br>visiter</h1>
+    
+    <label>Recherche :</label>
+    <input type="search" placeholder="Recherchez vos activités ...">
+    <button>OK</button>
+
+    <hr>
+
+    <h2>PLACES A VISITER</h2>
+
+    <h3>Cathédrale Saint-Sauveur</h3>
+    <p><strong>€GRATUIT</strong></p>
+    <ul>
+        <li>Tout les jours</li>
+        <li>De 8h40 à 18h30</li>
+        <li>Parking à proximité</li>
+        <li>Site et monument historique</li>
+        <li>En ville</li>
+    </ul>
+    <button>S'y rendre</button>
+
+    <br><br>
+
+    <h3>Musée Granet</h3>
+    <p><strong>€GRATUIT/6.50</strong></p>
+    <ul>
+        <li>Mardi à Dimanche</li>
+        <li>De 12h à 18h</li>
+        <li>Gratuité pour étudiants </li>
+        <li>Découverte et arts</li>
+        <li>En ville</li>
+    </ul>
+    <button>S'y rendre</button>
+
+      <br><br>
+
+    <h3>Fondation Vasarely</h3>
+    <p><strong>€9-15</strong></p>
+    <ul>
+        <li>Mercredi à dimanche </li>
+        <li>De 10h30 à 17h30</li>
+        <li>Prix réduit pour étudiant</li>
+        <li>Centre architectonique</li>
+        <li>Expérience unique</li>
+    </ul>
+    <button>S'y rendre</button>
+
+    
+
+    <hr>
+
+
+    <h3>Réseaux Sociaux</h3>
+    <ul>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="#">LinkedIn</a></li>
+    </ul>
+
+</body>
+</html>    
