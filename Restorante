@@ -6,6 +6,91 @@
     <link rel="stylesheet" href=
 </head>
 <body>
+<header>
+  <button id="openMenu">☰</button>
+  <aside class="menu">
+      <button class="close">×</button>
+      <h2>Aix-Étudiants</h2>
+      <h3>Menu.</h3>
+      <hr>
+
+      <ul>
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Restaurants</p>
+                  <p class="desc">Meilleures adresses étudiantes.</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Places à visiter</p>
+                  <p class="desc">Le plus beau d'Aix-en-Provence.</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Snacks</p>
+                  <p class="desc">Le moins cher pour manger</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Activités</p>
+                  <p class="desc">Pour bien s’amuser.</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Shopping</p>
+                  <p class="desc">Boutiques et centres d’achats</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Hotels</p>
+                  <p class="desc">Dormir sur Aix-en-Provence.</p>
+              </div>
+          </li>
+      </ul>
+
+      <hr>
+
+      <ul>
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Nous contacter</p>
+                  <p class="desc">Une question ou autre ?</p>
+              </div>
+          </li>
+
+          <li>
+              <span class="icon">★</span>
+              <div>
+                  <p class="title">Sources</p>
+                  <p class="desc">Informations, sources utilisées</p>
+              </div>
+          </li>
+      </ul>
+  </aside>
+
+    <img src="" alt="">
+    <h1>ÉtudiAix</h1>
+
+    <label for="search">Recherche :</label>
+    <input id="search" type="search" placeholder="Recherchez vos activités ...">
+</header>
 
     <h1>ÉtudiAix</h1>
     <button>Menu</button>
