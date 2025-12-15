@@ -1,10 +1,11 @@
-/* --- 1. VARIABLES & RESET --- */
+/* --- RESET ET VARIABLES GLOBALES --- */
 :root {
     --primary-gold: #d4af37;
+    --secondary-gold: #e5c975;
     --bg-beige: #f3eadd;
     --text-dark: #333333;
+    --text-grey: #666666;
     --white: #ffffff;
-    --btn-dark: #2c2c2c; /* Le noir/gris des boutons */
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -18,22 +19,23 @@ body {
     font-family: var(--font-main);
     background-color: var(--bg-beige);
     color: var(--text-dark);
-    text-align: center; /* Centre tout le contenu */
-    padding-bottom: 50px;
+    overflow-x: hidden;
 }
 
-/* --- 2. HEADER (Barre du haut) --- */
+/* --- HEADER --- */
 header {
     background-color: var(--white);
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-/* Bouton Burger */
 #openMenu {
     position: absolute;
     left: 20px;
@@ -44,169 +46,353 @@ header {
     color: var(--text-dark);
 }
 
-/* Masquer les éléments inutiles dans le header s'il y en a */
 header img {
     display: none;
 }
 
-/* Style du Logo "ÉtudiAix" (Le premier H1 juste après le header) */
-body > h1:first-of-type {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: black;
-    margin-top: 20px; /* Un peu d'espace si hors du header */
-    margin-bottom: 0;
-}
-
-/* --- 3. MENU LATÉRAL (Avec le FIX de la CROIX) --- */
+/* --- MENU LATÉRAL --- */
 .menu {
-    display: none; /* Activé par JS via .open */
     position: fixed;
-    top: 0; left: 0;
-    width: 320px; height: 100vh;
-    background: white;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background: var(--white);
     padding: 20px;
-    z-index: 1000;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 200;
     overflow-y: auto;
-    text-align: left;
+    display: none;
 }
-.menu.open { display: block; }
 
-/* 👇 LA CROIX VISIBLE (Noir) 👇 */
+.menu.open {
+    transform: translateX(0);
+    display: block;
+}
+
 .menu .close {
     background: none;
     border: none;
     font-size: 2rem;
     float: right;
     cursor: pointer;
-    color: var(--text-dark); 
+    color: var(--text-dark);
+    line-height: 1;
+    padding: 0;
+    margin: 0;
 }
 
-.menu h2 { color: var(--primary-gold); margin-top: 10px; }
-.menu ul { list-style: none; margin-top: 20px; }
-.menu li {
-    display: flex; align-items: center;
-    margin-bottom: 20px; padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-.menu .icon { color: var(--primary-gold); font-size: 1.2rem; margin-right: 10px; }
-.menu .title { font-weight: bold; font-size: 0.9rem; }
-.menu .desc { font-size: 0.75rem; color: #666; }
-.menu button {
-    margin-left: auto;
-    background: var(--primary-gold);
-    color: white;
-    border: none; padding: 5px 10px;
-    border-radius: 5px; cursor: pointer;
+.menu h2 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--primary-gold);
+    font-size: 1.5rem;
+    font-weight: 700;
+    clear: both;
 }
 
-/* --- 4. HERO SECTION (Titre + Image de fond) --- */
-
-/* On cible le 2ème H1 pour en faire la bannière "Activités" */
-body > h1:nth-of-type(2) {
-    /* Image de fond type Bowling / Loisirs */
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    color: var(--white);
-    padding: 100px 20px;
-    font-size: 3rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-    margin: 20px 0 30px 0;
-    line-height: 1.2;
+.menu h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
 }
 
-/* Masquer les HR pour un design plus propre */
-hr {
+.menu > a {
     display: none;
 }
 
-/* --- 5. BARRE DE RECHERCHE CENTRALE --- */
-body > label { display: none; } /* Cache le texte "Recherche :" */
-
-body > input[type="search"] {
-    width: 60%;
-    max-width: 400px;
-    padding: 12px 20px;
-    border-radius: 50px;
-    border: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-size: 1rem;
-    margin-bottom: 10px;
-    outline: none;
+.menu hr {
+    display: none;
 }
 
-/* Le bouton OK (s'il est présent, sinon cette règle ne s'applique pas) */
-body > button:first-of-type {
-    /* Attention : dans ton HTML Activités, il n'y a pas de bouton OK après l'input, 
-       mais s'il y en avait un, voici le style : */
-    background: var(--btn-dark);
+.menu ul {
+    list-style: none;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.menu li:last-child {
+    border-bottom: none;
+}
+
+.menu .icon {
+    color: var(--primary-gold);
+    font-size: 1.3rem;
+    margin-right: 12px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.menu li > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu .title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+
+.menu .desc {
+    font-size: 0.85rem;
+    color: var(--text-grey);
+    line-height: 1.3;
+}
+
+.menu li button {
+    margin-left: 10px;
+    background: var(--primary-gold);
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-left: 5px;
-}
-
-/* --- 6. LISTE DES ACTIVITÉS --- */
-
-/* Titre de section "ACTIVITÉS" */
-h2 {
-    color: #cbb085; /* Doré mat */
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-    margin: 50px 0 30px 0;
-    text-transform: uppercase;
-}
-
-/* Nom des Activités (h3) */
-h3 {
-    font-size: 1.6rem;
-    color: var(--text-dark);
-    margin-top: 60px; /* Espace entre les blocs */
-    margin-bottom: 5px;
-}
-
-/* Le PRIX (Gros texte) */
-p strong {
-    font-size: 2.2rem;
-    font-weight: 800;
-    display: block;
-    margin: 10px 0 20px 0;
-    color: var(--text-dark);
-}
-
-/* La liste des infos (ul) */
-ul {
-    list-style: none;
-    margin-bottom: 25px;
-    display: inline-block; /* Centre le bloc mais aligne le texte à gauche */
-    text-align: left;
-    min-width: 250px;
-}
-
-ul li {
-    padding: 5px 0;
-    color: #666;
-    font-size: 1rem;
-}
-
-ul li::before {
-    content: "• "; /* Ajout de puces */
-    color: #ccc;
-    font-weight: bold;
-}
-
-/* Les boutons "S'y rendre" (Noir) */
-/* On exclut le burger (#openMenu) */
-body > button:not(#openMenu) {
-    background-color: var(--btn-dark);
-    color: var(--white);
-    border: none;
-    padding: 12px 50px;
+    padding: 6px 14px;
     border-radius: 5px;
-    font-size: 1rem;
     cursor: pointer;
-    margin-bottom: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+.menu li button:hover {
+    background: var(--secondary-gold);
+}
+
+.menu li a {
+    text-decoration: none;
+}
+
+/* --- TITRE PRINCIPAL (ÉtudiAix en haut à gauche) --- */
+body > h1:first-of-type {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    z-index: 99;
+    margin: 0;
+    padding: 22px 0;
+    background: var(--white);
+    width: 100%;
+    text-align: center;
+}
+
+/* --- SECTION HERO (Activités Jeux sur Aix-en-Provence) --- */
+body > h1:nth-of-type(2) {
+    margin-top: 70px;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                      url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px 10%;
+    color: var(--white);
+    font-size: 3rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 0;
+}
+
+/* --- BARRE DE RECHERCHE --- */
+body > label {
+    display: none;
+}
+
+body > input[type="search"] {
+    display: block;
+    position: relative;
+    margin: -30px auto 60px;
+    width: 90%;
+    max-width: 600px;
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    font-size: 1rem;
+    outline: none;
+    z-index: 10;
+}
+
+/* --- HR cachés --- */
+body > hr {
+    display: none;
+}
+
+/* --- TITRE DE SECTION --- */
+body > h2 {
+    text-align: center;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-grey);
+    margin: 40px 0 30px;
+    font-weight: 400;
+}
+
+/* --- CARTES D'ACTIVITÉS --- */
+body > h3 {
+    background: var(--white);
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+body > p {
+    background: var(--white);
+    width: 90%;
+    max-width: 400px;
+    margin: -10px auto 10px;
+    padding: 0 30px;
+    border-radius: 0;
+    font-size: 1.1rem;
+}
+
+body > p strong {
+    color: var(--primary-gold);
+    font-size: 1.3rem;
+}
+
+body > ul {
+    background: var(--white);
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 10px;
+    padding: 0 30px;
+    list-style: none;
+}
+
+body > ul li {
+    padding: 8px 0;
+    color: var(--text-grey);
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+body > ul li:last-child {
+    border-bottom: none;
+}
+
+body > ul li::before {
+    content: "• ";
+    color: var(--primary-gold);
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+body > button {
+    background: var(--text-dark);
+    color: var(--white);
+    width: 90%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto 40px;
+    padding: 15px;
+    border: none;
+    border-radius: 0 0 15px 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+body > button:hover {
+    background: var(--primary-gold);
+}
+
+body > br {
+    display: none;
+}
+
+/* --- FOOTER (Réseaux Sociaux) --- */
+body > h3:last-of-type {
+    background: var(--white);
+    width: 100%;
+    max-width: none;
+    margin: 60px 0 0;
+    padding: 40px;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 1rem;
+}
+
+body > ul:last-of-type {
+    background: var(--white);
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 40px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+body > ul:last-of-type li {
+    border: none;
+    padding: 0;
+}
+
+body > ul:last-of-type li::before {
+    display: none;
+}
+
+body > ul:last-of-type a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+body > ul:last-of-type a:hover {
+    color: var(--primary-gold);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 768px) {
+    body > h1:nth-of-type(2) {
+        font-size: 2rem;
+        height: 40vh;
+        padding: 30px 20px;
+    }
+
+    body > input[type="search"] {
+        width: 90%;
+        margin-top: -25px;
+    }
+
+    body > h3,
+    body > p,
+    body > ul,
+    body > button {
+        width: 95%;
+    }
+}
