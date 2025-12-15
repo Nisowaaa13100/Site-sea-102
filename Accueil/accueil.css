@@ -228,6 +228,7 @@ main section {
 
 /* --- LES CARTES (Article) --- */
 article {
+    position: relative;
     border: 1px solid #f0f0f0;
     border-radius: 10px;
     padding: 30px 20px;
@@ -237,6 +238,15 @@ article {
     flex-direction: column;
     align-items: center; /* Centre tes futures images horizontalement */
     background: #fff;
+}
+
+article a {
+    position: absolute; /* Sort du flux normal */
+    top: 0;
+    left: 0;
+    width: 100%;       /* Prend toute la largeur de l'article */
+    height: 100%;      /* Prend toute la hauteur de l'article */
+    z-index: 10;       /* Se met au-dessus du texte */
 }
 
 article:hover {
