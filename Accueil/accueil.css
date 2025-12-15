@@ -1,4 +1,3 @@
-/*Debut Menu Hamburger*/
 .menu {
     display: none;
     position: fixed;
@@ -30,7 +29,6 @@
     font-size: 26px;
     cursor: pointer;
 }
-/*fin Menu Hamburger*/
 
 /* --- RESET ET VARIABLES GLOBALES --- */
 :root {
@@ -85,20 +83,6 @@ header h1 {
     letter-spacing: -1px;
 }
 
-/* On cache seulement l'image directe du header (celle qui sert au fond normalement) */
-header > img {
-    display: none;
-}
-
-/* On force l'affichage des images dans le menu */
-.menu img {
-    display: block; 
-    width: 50px;       /* Ajuste la taille selon tes besoins */
-    height: auto;
-    margin-right: 15px; /* Un peu d'espace entre l'image et le texte */
-    object-fit: contain;
-}
-
 /* --- BARRE DE RECHERCHE --- */
 header label {
     display: none;
@@ -147,6 +131,7 @@ header label {
     font-size: 2rem;
     float: right;
     cursor: pointer;
+    color: var(--text-dark);
 }
 
 .menu h2 {

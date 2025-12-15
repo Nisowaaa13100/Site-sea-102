@@ -1,33 +1,206 @@
-/*Debut Menu Hamburger*/
-.menu {
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    --primary-gold: #d4af37;
+    --bg-beige: #f3eadd;
+    --text-dark: #333333;
+    --white: #ffffff;
+    --btn-dark: #2c2c2c; /* Le noir/gris des boutons */
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-beige);
+    color: var(--text-dark);
+    text-align: center; /* Centre tout le contenu */
+    padding-bottom: 50px;
+}
+
+/* --- 2. HEADER (Barre du haut) --- */
+header {
+    background-color: var(--white);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: black;
+    margin: 0;
+}
+
+/* Bouton Burger */
+#openMenu {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+/* Masquer la recherche du header (doublon) */
+header label, header input, header img {
     display: none;
+}
+
+/* --- 3. MENU LATÉRAL (Avec le FIX de la CROIX) --- */
+.menu {
+    display: none; /* Activé par JS via .open */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 100%;
+    top: 0; left: 0;
+    width: 320px; height: 100vh;
     background: white;
     padding: 20px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
     overflow-y: auto;
+    text-align: left;
+}
+.menu.open { display: block; }
+
+/* 👇 LA CROIX VISIBLE (Noir) 👇 */
+.menu .close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    float: right;
+    cursor: pointer;
+    color: var(--text-dark); 
 }
 
-.menu.open {
+.menu h2 { color: var(--primary-gold); margin-top: 10px; }
+.menu ul { list-style: none; margin-top: 20px; }
+.menu li {
+    display: flex; align-items: center;
+    margin-bottom: 20px; padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.menu .icon { color: var(--primary-gold); font-size: 1.2rem; margin-right: 10px; }
+.menu .title { font-weight: bold; font-size: 0.9rem; }
+.menu .desc { font-size: 0.75rem; color: #666; }
+.menu button {
+    margin-left: auto;
+    background: var(--primary-gold);
+    color: white;
+    border: none; padding: 5px 10px;
+    border-radius: 5px; cursor: pointer;
+}
+
+/* --- 4. HERO SECTION (Titre + Image de fond) --- */
+
+/* On masque le premier H1 du body (doublon du logo) */
+body > h1:first-of-type {
+    display: none;
+}
+
+/* On cible le 2ème H1 pour en faire la bannière "Hotels" */
+body > h1:nth-of-type(2) {
+    /* Image de fond type Hôtel / Chambre cosy */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 100px 20px;
+    font-size: 3rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+/* Masquer les HR pour un design plus propre */
+hr {
+    display: none;
+}
+
+/* --- 5. BARRE DE RECHERCHE CENTRALE --- */
+body > label { display: none; } /* Cache le texte "Recherche :" */
+
+body > input[type="search"] {
+    width: 60%;
+    max-width: 400px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+/* Le bouton OK */
+body > button:first-of-type {
+    background: var(--btn-dark);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* --- 6. LISTE DES HÔTELS --- */
+
+/* Titre de section "HÔTELS" */
+h2 {
+    color: #cbb085; /* Doré mat */
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin: 50px 0 30px 0;
+    text-transform: uppercase;
+}
+
+/* Nom des Hôtels (h3) */
+h3 {
+    font-size: 1.6rem;
+    color: var(--text-dark);
+    margin-top: 60px; /* Espace entre les blocs */
+    margin-bottom: 5px;
+}
+
+/* Le PRIX (Gros texte) */
+p strong {
+    font-size: 2.2rem;
+    font-weight: 800;
     display: block;
+    margin: 10px 0 20px 0;
+    color: var(--text-dark);
 }
 
-#openMenu {
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
+/* La liste des services (ul) */
+ul {
+    list-style: none;
+    margin-bottom: 25px;
+    display: inline-block; /* Centre le bloc mais aligne le texte à gauche */
+    text-align: left;
+    min-width: 220px;
 }
 
-.close {
-    background: none;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
+ul li {
+    padding: 5px 0;
+    color: #666;
+    font-size: 1rem;
 }
-/*fin Menu Hamburger*/
+
+ul li::before {
+    content: "• "; /* Ajout de puces */
+    color: #ccc;
+    font-weight: bold;
+}
+
+/* Les boutons "S'y rendre" (Noir) */
+/* On exclut le burger et le bouton de recherche */
+body > button:not(#openMenu):not(:first-of-type) {
+    background-color: var(--btn-
