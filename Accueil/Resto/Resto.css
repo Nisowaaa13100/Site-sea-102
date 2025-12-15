@@ -1,33 +1,252 @@
-/*Debut Menu Hamburger*/
-.menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 100%;
-    background: white;
-    padding: 20px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    overflow-y: auto;
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    --primary-gold: #d4af37;
+    --bg-beige: #f3eadd;
+    --text-dark: #333333;
+    --white: #ffffff;
+    --btn-dark: #2c2c2c; /* Le noir/gris des boutons */
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.menu.open {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-beige);
+    color: var(--text-dark);
+    text-align: center; /* Centre tout le contenu par défaut */
+    padding-bottom: 50px;
+}
+
+/* --- 2. HEADER (Barre du haut) --- */
+header {
+    background-color: var(--white);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: black;
+    margin: 0;
+}
+
+/* Bouton Burger */
+#openMenu {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+/* Masquer les éléments de recherche du header (doublon avec le corps de page) */
+header label, header input, header img {
+    display: none;
+}
+
+/* --- 3. MENU LATÉRAL (Avec la CROIX VISIBLE) --- */
+.menu {
+    display: none; /* Activé par JS */
+    position: fixed;
+    top: 0; left: 0;
+    width: 320px; height: 100vh;
+    background: white;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    text-align: left; /* Remet le texte du menu à gauche */
+}
+.menu.open { display: block; }
+
+/* 👇 LA RÉPARATION DE LA CROIX 👇 */
+.menu .close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    float: right;
+    cursor: pointer;
+    color: var(--text-dark); /* Force la couleur noire */
+}
+
+.menu h2 { color: var(--primary-gold); margin-top: 10px; }
+.menu ul { list-style: none; margin-top: 20px; }
+.menu li {
+    display: flex; align-items: center;
+    margin-bottom: 20px; padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.menu .icon { color: var(--primary-gold); font-size: 1.2rem; margin-right: 10px; }
+.menu .title { font-weight: bold; font-size: 0.9rem; }
+.menu .desc { font-size: 0.75rem; color: #666; }
+.menu button {
+    margin-left: auto;
+    background: var(--primary-gold);
+    color: white;
+    border: none; padding: 5px 10px;
+    border-radius: 5px; cursor: pointer;
+}
+
+/* --- 4. HERO SECTION (Le titre sur l'image) --- */
+
+/* On cible le 2ème H1 de la page (celui après le header) pour mettre l'image */
+body > h1:nth-of-type(2) {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 80px 20px;
+    font-size: 2.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+/* On masque le premier H1 du body qui est un doublon du header */
+body > h1:first-of-type {
+    display: none;
+}
+
+/* Masquer les lignes horizontales pour un look plus propre */
+hr {
+    display: none;
+}
+
+/* --- 5. BARRE DE RECHERCHE PRINCIPALE --- */
+/* Cible le label et l'input qui sont directement dans le body */
+body > label { display: none; } /* Cache le texte "Recherche :" */
+
+body > input[type="search"] {
+    width: 60%;
+    max-width: 400px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+/* Le bouton "OK" à côté de la recherche */
+body > button:first-of-type {
+    background: var(--btn-dark);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* --- 6. LISTE DES RESTAURANTS --- */
+
+/* Le titre "RESTAURANTS" */
+h2 {
+    color: #cbb085; /* Doré mat */
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin: 40px 0 30px 0;
+    text-transform: uppercase;
+}
+
+/* Noms des restaurants (h3) */
+h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-top: 40px; /* Espace entre les restos */
+    margin-bottom: 5px;
+}
+
+/* Le Prix (Cible le paragraphe qui contient le strong) */
+p strong {
+    font-size: 2.5rem; /* Très gros comme sur la maquette */
+    font-weight: 800;
+    display: block;
+    margin: 10px 0 20px 0;
+    color: var(--text-dark);
+}
+
+/* La liste des caractéristiques (ul) */
+ul {
+    list-style: none;
+    margin-bottom: 20px;
+    display: inline-block; /* Pour centrer le bloc mais aligner le texte */
+    text-align: left;
+}
+
+ul li {
+    padding: 5px 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+ul li::before {
+    content: "• ";
+    color: #ccc;
+}
+
+/* Les boutons "S'y rendre" */
+/* On cible les boutons qui ne sont pas dans le header/menu */
+body > button:not(#openMenu):not(:first-of-type) {
+    background-color: var(--btn-dark);
+    color: var(--white);
+    border: none;
+    padding: 12px 40px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background 0.3s;
+}
+
+body > button:not(#openMenu):not(:first-of-type):hover {
+    background-color: black;
+}
+
+/* Cache les <br> pour gérer l'espace proprement avec CSS */
+br {
+    display: none;
+}
+/* Réafficher les <br> nécessaires dans le titre H1 */
+h1 br {
     display: block;
 }
 
-#openMenu {
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
+/* --- 7. RÉSEAUX SOCIAUX (Section du bas) --- */
+/* On cible le dernier h3 et la dernière ul pour les réseaux */
+h3:last-of-type {
+    margin-top: 60px;
+    border-top: 1px solid #ddd;
+    padding-top: 40px;
 }
 
-.close {
-    background: none;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
+ul:last-of-type {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
 }
-/*fin Menu Hamburger*/
+
+ul:last-of-type li::before {
+    content: ""; /* Enlève les points pour les réseaux */
+}
+
+ul:last-of-type a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
