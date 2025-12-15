@@ -255,6 +255,7 @@ article img {
     max-width: 80px;  /* Taille maximum de tes logos */
     margin-bottom: 15px;
     display: block;
+    mix-blend-mode: screen;
 }
 
 article h3 {
