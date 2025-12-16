@@ -91,7 +91,7 @@ header label {
 #search {
     position: absolute;
     /* Ajuste cette valeur si tu veux monter ou descendre la barre */
-    top: 500px; 
+    top: 350px; 
     left: 50%;
     transform: translateX(-50%);
     width: 60%;
