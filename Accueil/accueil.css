@@ -319,3 +319,70 @@ hr {
         gap: 20px;
     }
 }
+/* --- FOOTER --- */
+footer {
+    background-color: var(--white);
+    padding: 50px 20px;
+    border-top: 1px solid #eee;
+    
+    /* FLEXBOX : Pour aligner les colonnes côte à côte */
+    display: flex;
+    justify-content: space-around; /* Espacement égal entre les colonnes */
+    align-items: flex-start;       /* Aligner le haut des colonnes */
+    flex-wrap: wrap;               /* Permet de passer à la ligne si l'écran est petit */
+}
+
+/* Style de chaque colonne */
+.footer-col {
+    flex: 1;             /* Chaque colonne prend la même largeur */
+    min-width: 200px;    /* Largeur minimum pour ne pas être trop écrasé */
+    text-align: center;  /* Texte centré (ou mets 'left' si tu préfères) */
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* Nettoyage des listes à puces */
+.footer-col ul {
+    list-style: none; /* Enlève les points devant les listes */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin-bottom: 12px; /* Espacement entre les liens */
+}
+
+/* Style des liens */
+.footer-col a {
+    text-decoration: none;      /* Enlève le soulignement bleu moche */
+    color: var(--text-grey);    /* Couleur grise par défaut */
+    font-size: 0.9rem;
+    transition: color 0.3s ease; /* Transition douce au survol */
+}
+
+/* Effet quand on passe la souris dessus */
+.footer-col a:hover {
+    color: var(--primary-gold); /* Devient doré au survol */
+}
+
+/* --- RESPONSIVE (MOBILE) --- */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column; /* On empile les colonnes verticalement */
+        align-items: center;    /* On centre tout */
+        gap: 30px;              /* Espace entre les groupes */
+    }
+    
+    .footer-col {
+        width: 100%;           /* Prend toute la largeur sur mobile */
+        text-align: center;    /* Force le centrage sur mobile */
+    }
+}
