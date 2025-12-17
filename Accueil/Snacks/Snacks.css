@@ -1,13 +1,19 @@
-/* --- 1. VARIABLES & RESET --- */
+/* ==========================================================================
+   VARIABLES GLOBALES
+   ========================================================================== */
 :root {
     --primary-gold: #d4af37;
+    --secondary-gold: #e5c975;
     --bg-beige: #f3eadd;
     --text-dark: #333333;
+    --text-grey: #666666;
     --white: #ffffff;
-    --btn-dark: #2c2c2c; /* Le noir/gris des boutons */
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* ==========================================================================
+   RESET
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,29 +24,35 @@ body {
     font-family: var(--font-main);
     background-color: var(--bg-beige);
     color: var(--text-dark);
-    text-align: center; /* Centre tout le contenu */
-    padding-bottom: 50px;
+    overflow-x: hidden;
 }
 
-/* --- 2. HEADER (Barre du haut) --- */
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 header {
     background-color: var(--white);
-    height: 60px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 800;
     color: black;
-    margin: 0;
+    letter-spacing: -1px;
 }
 
-/* Bouton Burger */
+header label {
+    display: none;
+}
+
+/* Bouton hamburger */
 #openMenu {
     position: absolute;
     left: 20px;
@@ -49,91 +61,294 @@ header h1 {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-dark);
+    padding: 5px;
+    transition: opacity 0.2s ease;
 }
 
-/* Masquer la recherche du header (doublon) */
-header label, header input, header img {
-    display: none;
+#openMenu:hover {
+    opacity: 0.7;
 }
 
-/* --- 3. MENU LATÉRAL (Avec le FIX de la CROIX) --- */
+/* ==========================================================================
+   MENU LATÉRAL (HAMBURGER)
+   ========================================================================== */
 .menu {
-    display: none; /* Activé par JS via .open */
     position: fixed;
-    top: 0; left: 0;
-    width: 320px; height: 100vh;
-    background: white;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background: var(--white);
     padding: 20px;
-    z-index: 1000;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 200;
     overflow-y: auto;
-    text-align: left;
 }
-.menu.open { display: block; }
 
-/* 👇 LA CROIX VISIBLE (Noir) 👇 */
+.menu.open {
+    transform: translateX(0);
+}
+
 .menu .close {
     background: none;
     border: none;
     font-size: 2rem;
     float: right;
     cursor: pointer;
-    color: var(--text-dark); 
+    color: var(--text-dark);
+    transition: opacity 0.2s ease;
 }
 
-.menu h2 { color: var(--primary-gold); margin-top: 10px; }
-.menu ul { list-style: none; margin-top: 20px; }
-.menu li {
-    display: flex; align-items: center;
-    margin-bottom: 20px; padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
+.menu .close:hover {
+    opacity: 0.7;
 }
-.menu .icon { color: var(--primary-gold); font-size: 1.2rem; margin-right: 10px; }
-.menu .title { font-weight: bold; font-size: 0.9rem; }
-.menu .desc { font-size: 0.75rem; color: #666; }
+
+.menu h2 {
+    margin-top: 10px;
+    color: var(--primary-gold);
+    clear: both;
+}
+
+.menu ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.menu li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.menu li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-gold);
+}
+
+.menu li a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.menu .icon {
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.menu .title {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.menu .desc {
+    font-size: 0.75rem;
+    color: var(--text-grey);
+}
+
 .menu button {
     margin-left: auto;
     background: var(--primary-gold);
     color: white;
-    border: none; padding: 5px 10px;
-    border-radius: 5px; cursor: pointer;
-}
-
-/* --- 4. HERO SECTION (Titre + Image de fond) --- */
-
-/* On masque le premier H1 du body (doublon du logo) */
-body > h1:first-of-type {
-    display: none;
-}
-
-/* On cible le 2ème H1 pour en faire la bannière "Snacks" */
-body > h1:nth-of-type(2) {
-    /* Image de fond type Burger / Fast Food */
-    background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    color: var(--white);
-    padding: 100px 20px;
-    font-size: 3rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-    margin-bottom: 30px;
-    line-height: 1.2;
-}
-
-/* Masquer les HR pour un design plus propre */
-hr {
-    display: none;
-}
-
-/* --- 5. BARRE DE RECHERCHE CENTRALE --- */
-body > label { display: none; } /* Cache le texte "Recherche :" */
-
-body > input[type="search"] {
-    width: 60%;
-    max-width: 400px;
-    padding: 12px 20px;
-    border-radius: 50px;
     border: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s ease;
+}
+
+/* ==========================================================================
+   BARRE DE RECHERCHE
+   ========================================================================== */
+#search {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 500px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
-    margin-bottom: 10
+    z-index: 10;
+    outline: none;
+}
+
+/* ==========================================================================
+   IMAGE DE FOND
+   ========================================================================== */
+main {
+    position: relative;
+    width: 100%;
+}
+
+main h2 {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 120px;
+    padding-left: 10%;
+    color: var(--white);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+main h2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.7);
+}
+
+main h3 {
+    text-align: center;
+    color: #cbb085; /* Doré mat */
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin: 50px 0 30px 0;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CARTES
+   ========================================================================== */
+main section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+    border-radius: 20px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+article {
+    position: relative;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 0 0 30px 0;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    overflow: hidden;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-gold);
+}
+
+article a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+article img {
+    width: 100%;        
+    height: 180px;        
+    object-fit: cover;    
+    display: block;
+    margin-bottom: 20px;  
+}
+
+article h3 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+article p {
+    font-size: 3.5rem;
+    color: var(--text-black);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+article li {
+    text-align: left;
+    }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--white);
+    padding: 50px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    text-decoration: none;
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--primary-gold);
+}
+
