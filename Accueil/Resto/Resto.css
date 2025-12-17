@@ -225,3 +225,126 @@ main h2 img {
     filter: brightness(0.7);
 }
 
+main h3 {
+    text-align: center;
+    color: #cbb085; /* Doré mat */
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin: 50px 0 30px 0;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   CARTES
+   ========================================================================== */
+main section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+    border-radius: 20px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+article {
+    position: relative;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 0 0 30px 0;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    overflow: hidden;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-gold);
+}
+
+article a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+article img {
+    width: 100%;        
+    height: 180px;        
+    object-fit: cover;    
+    display: block;
+    margin-bottom: 20px;  
+}
+
+article h3 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+article p {
+    font-size: 3.5rem;
+    color: var(--text-black);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--white);
+    padding: 50px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin-bottom: 12px;
+}
+
+.footer-col a {
+    text-decoration: none;
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--primary-gold);
+}
+
