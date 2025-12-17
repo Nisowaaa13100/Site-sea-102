@@ -375,3 +375,208 @@ footer {
         text-align: center;
     }
 }
+
+
+/* ==========================================================================
+   RETOUR TOP ET THEME SWITCH
+   ========================================================================== */
+
+#bouton {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: var(--primary-gold); /* Set a background color */
+  color: var(--white); /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 0; /* Some padding */
+  width: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height : 50px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+#bouton:hover {
+  background-color: var(--secondary-gold) ;
+}
+
+/* ==========================================================================
+   BOUTON THEME SWITCH (MODIFIÉ)
+   ========================================================================== */
+#switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--primary-gold);
+    border: 2px solid var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001; /* Z-index élevé pour être sûr d'être au-dessus du header */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+#switch:hover {
+    transform: scale(1.05);
+}
+
+#switch svg {
+    fill: var(--text-dark);
+    transition: fill 0.3s ease;
+}
+
+#switch svg:last-child {
+    display: none;
+}
+
+
+body.darkmode #switch {
+    background-color: #2a2a2a;
+    border-color: var(--primary-gold); 
+}
+
+
+body.darkmode #switch svg {
+    fill: var(--primary-gold);
+}
+
+
+body.darkmode #switch svg:first-child {
+    display: none;
+}
+body.darkmode #switch svg:last-child {
+    display: block;
+}
+
+/* ==========================================================================
+   MODE SOMBRE (TEXTE BLANC)
+   ========================================================================== */
+
+/* 1. Redéfinition des couleurs principales pour le thème sombre */
+body.darkmode {
+    /* Fond général très foncé (charbon) */
+    --bg-beige: #1a1a1a;
+    /* Les conteneurs deviennent transparents ou de la même couleur que le fond */
+    --white: #1a1a1a;
+    
+    /* ICI : On force le blanc pur pour le texte */
+    --text-dark: #ffffff;
+    --text-grey: #ffffff; 
+    
+    /* Le doré reste le doré pour les bordures */
+    --primary-gold: #d4af37;
+}
+
+/* 2. Ajustements structurels pour le mode sombre */
+
+/* Header */
+body.darkmode header {
+    box-shadow: none;
+    border-bottom: 1px solid #333;
+}
+
+body.darkmode header h1 {
+    color: #ffffff; /* Titre du site en blanc */
+}
+
+/* Le conteneur principal de la grille */
+body.darkmode main section {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* --- STYLE DES CARTES (ARTICLES) --- */
+body.darkmode article {
+    background-color: transparent;
+    border: 1px solid var(--primary-gold); /* On garde la bordure dorée pour le style */
+    box-shadow: none;
+}
+
+body.darkmode article:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.05); /* Léger fond blanc au survol */
+}
+
+/* Titres des cartes (H3) EN BLANC */
+body.darkmode article h3 {
+    color: #ffffff; /* Blanc pur */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Paragraphes des cartes EN BLANC */
+body.darkmode article p {
+    color: #ffffff; /* Blanc pur */
+    opacity: 0.8; /* Légère transparence pour ne pas agresser les yeux, mais reste blanc */
+}
+
+/* --- LES ICONES DES CARTES --- */
+/* Filtre doré pour les icônes (si tu veux qu'elles restent dorées pour contraster avec le texte blanc) */
+body.darkmode article img {
+    filter: brightness(0) saturate(100%) invert(76%) sepia(37%) saturate(698%) hue-rotate(5deg) brightness(92%) contrast(89%);
+}
+
+/* --- FOOTER --- */
+body.darkmode footer {
+    background-color: #141414;
+    border-top: 1px solid #333;
+}
+
+/* Titres et liens du footer en blanc */
+body.darkmode .footer-col h4,
+body.darkmode .footer-col a {
+    color: #ffffff;
+}
+
+body.darkmode .footer-col a:hover {
+    color: var(--primary-gold); /* Petit effet doré au survol du lien uniquement */
+}
+
+/* --- MENU HAMBURGER --- */
+body.darkmode .menu {
+    background-color: #1a1a1a;
+    border-right: 1px solid var(--primary-gold);
+}
+body.darkmode .menu li {
+    border-bottom: 1px solid #333;
+}
+body.darkmode .menu .close,
+body.darkmode .menu .title,
+body.darkmode .menu .desc,
+body.darkmode .menu .icon {
+    color: #ffffff; /* Tout le texte du menu en blanc */
+}
+
+/* Champ de recherche en mode sombre */
+body.darkmode #search {
+    background-color: #2a2a2a; /* Gris foncé SOLIDE (pas de transparence) */
+    color: #ffffff;            /* Texte blanc */
+    border: 1px solid var(--primary-gold);
+}
+
+body.darkmode #search::placeholder {
+    color: #bbbbbb;
+}
+/* Force le grand titre sur l'image à rester blanc en mode sombre */
+body.darkmode main h2 {
+    color: #ffffff;
+    /* On renforce un peu l'ombre du texte pour qu'il ressorte bien sur l'image */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+
+
+
