@@ -1,36 +1,6 @@
-.menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 100%;
-    background: white;
-    padding: 20px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    overflow-y: auto;
-}
-
-.menu.open {
-    display: block;
-}
-
-#openMenu {
-    font-size: 28px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.close {
-    background: none;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
-}
-
-/* --- RESET ET VARIABLES GLOBALES --- */
+/* ==========================================================================
+   VARIABLES GLOBALES
+   ========================================================================== */
 :root {
     --primary-gold: #d4af37;
     --secondary-gold: #e5c975;
@@ -41,6 +11,9 @@
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* ==========================================================================
+   RESET
+   ========================================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -54,7 +27,9 @@ body {
     overflow-x: hidden;
 }
 
-/* --- HEADER --- */
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 header {
     background-color: var(--white);
     height: 70px;
@@ -63,17 +38,7 @@ header {
     justify-content: center;
     position: relative;
     z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-#openMenu {
-    position: absolute;
-    left: 20px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
@@ -83,29 +48,30 @@ header h1 {
     letter-spacing: -1px;
 }
 
-/* --- BARRE DE RECHERCHE --- */
 header label {
     display: none;
 }
 
-#search {
+/* Bouton hamburger */
+#openMenu {
     position: absolute;
-    /* Ajuste cette valeur si tu veux monter ou descendre la barre */
-    top: 350px; 
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    max-width: 500px;
-    padding: 15px 20px;
-    border-radius: 30px;
+    left: 20px;
+    background: none;
     border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    font-size: 1rem;
-    z-index: 10;
-    outline: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    padding: 5px;
+    transition: opacity 0.2s ease;
 }
 
-/* --- MENU LATÉRAL --- */
+#openMenu:hover {
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   MENU HAMBURGER
+   ========================================================================== */
 .menu {
     position: fixed;
     top: 0;
@@ -114,7 +80,7 @@ header label {
     height: 100vh;
     background: var(--white);
     padding: 20px;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 200;
@@ -132,11 +98,17 @@ header label {
     float: right;
     cursor: pointer;
     color: var(--text-dark);
+    transition: opacity 0.2s ease;
+}
+
+.menu .close:hover {
+    opacity: 0.7;
 }
 
 .menu h2 {
     margin-top: 10px;
     color: var(--primary-gold);
+    clear: both;
 }
 
 .menu ul {
@@ -145,11 +117,30 @@ header label {
 }
 
 .menu li {
+    position: relative;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    padding-bottom: 10px;
+    padding: 15px 10px;
     border-bottom: 1px solid #eee;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.menu li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-gold);
+}
+
+.menu li a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
 }
 
 .menu .icon {
@@ -177,22 +168,39 @@ header label {
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.8rem;
+    transition: background-color 0.2s ease;
 }
 
-/* --- HERO SECTION (IMAGE DE LA FONTAINE) --- */
+/* ==========================================================================
+   BARRE DE RECHERCHE
+   ========================================================================== */
+#search {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    max-width: 500px;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    z-index: 10;
+    outline: none;
+}
+
+/* ==========================================================================
+   IMAGE DE FOND
+   ========================================================================== */
 main {
     position: relative;
     width: 100%;
 }
 
-/* 👇👇👇 C'EST ICI QUE TU METS L'IMAGE DE LA FONTAINE 👇👇👇 */
 main h2 {
-    /* Remplace l'URL ci-dessous par le chemin de ta propre image (ex: 'images/fontaine.jpg') */
-    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://img.provenceholidays.com/099c4181-e3de-4e71-d6c7-c2a9993bb000/w=3840,h=2880,fit=cover'); 
-    
-    background-size: cover;
-    background-position: center;
-    height: 60vh; /* Hauteur de l'image */
+    position: relative;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -201,27 +209,41 @@ main h2 {
     color: var(--white);
     font-size: 3.5rem;
     line-height: 1.1;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     margin-bottom: 0;
+    overflow: hidden;
 }
-/* 👆👆👆 FIN DE LA ZONE IMAGE 👆👆👆 */
 
-
-/* --- SECTION BLANCHE (GRILLE) --- */
+/* Style pour l'image de fond qui sera dans le HTML */
+main h2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.7);
+}
+/* ==========================================================================
+   CARTES
+   ========================================================================== */
 main section {
     background-color: var(--white);
     width: 90%;
     max-width: 1100px;
-    margin: 60px auto; 
+    margin: 60px auto;
     border-radius: 20px;
     padding: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-/* --- LES CARTES (Article) --- */
+/* ==========================================================================
+   ARTICLES
+   ========================================================================== */
 article {
     position: relative;
     border: 1px solid #f0f0f0;
@@ -231,28 +253,27 @@ article {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centre tes futures images horizontalement */
+    align-items: center;
     background: #fff;
-}
-
-article a {
-    position: absolute; /* Sort du flux normal */
-    top: 0;
-    left: 0;
-    width: 100%;       /* Prend toute la largeur de l'article */
-    height: 100%;      /* Prend toute la hauteur de l'article */
-    z-index: 10;       /* Se met au-dessus du texte */
 }
 
 article:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border-color: var(--secondary-gold);
 }
 
-/* Style pour tes futures images dans les articles */
+article a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
 article img {
-    max-width: 120px;  /* Taille maximum de tes logos */
+    max-width: 120px;
     margin-bottom: 15px;
     display: block;
 }
@@ -271,72 +292,26 @@ article p {
 }
 
 article button {
-    display: none; /* Boutons cachés comme sur la maquette */
-}
-
-/* --- FOOTER --- */
-footer {
-    background-color: var(--white);
-    padding: 40px;
-    display: flex;
-    justify-content: space-around;
-    border-top: 1px solid #eee;
-}
-
-footer h4 {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    color: var(--text-dark);
-    margin-bottom: 10px;
-}
-
-hr {
     display: none;
 }
 
-/* --- RESPONSIVE MOBILE --- */
-@media (max-width: 768px) {
-    main h2 {
-        font-size: 2.5rem;
-        padding-left: 20px;
-        height: 300px;
-    }
-
-    #search {
-        top: 260px;
-        width: 90%;
-    }
-
-    main section {
-        margin-top: 50px;
-        padding: 20px;
-        grid-template-columns: 1fr;
-    }
-    
-    footer {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-}
-/* --- FOOTER --- */
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 footer {
     background-color: var(--white);
     padding: 50px 20px;
     border-top: 1px solid #eee;
-    
-    /* FLEXBOX : Pour aligner les colonnes côte à côte */
     display: flex;
-    justify-content: space-around; /* Espacement égal entre les colonnes */
-    align-items: flex-start;       /* Aligner le haut des colonnes */
-    flex-wrap: wrap;               /* Permet de passer à la ligne si l'écran est petit */
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-/* Style de chaque colonne */
 .footer-col {
-    flex: 1;             /* Chaque colonne prend la même largeur */
-    min-width: 200px;    /* Largeur minimum pour ne pas être trop écrasé */
-    text-align: center;  /* Texte centré (ou mets 'left' si tu préfères) */
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -349,40 +324,60 @@ footer {
     letter-spacing: 1px;
 }
 
-/* Nettoyage des listes à puces */
 .footer-col ul {
-    list-style: none; /* Enlève les points devant les listes */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .footer-col li {
-    margin-bottom: 12px; /* Espacement entre les liens */
+    margin-bottom: 12px;
 }
 
-/* Style des liens */
 .footer-col a {
-    text-decoration: none;      /* Enlève le soulignement bleu moche */
-    color: var(--text-grey);    /* Couleur grise par défaut */
+    text-decoration: none;
+    color: var(--text-grey);
     font-size: 0.9rem;
-    transition: color 0.3s ease; /* Transition douce au survol */
+    transition: color 0.3s ease;
 }
 
-/* Effet quand on passe la souris dessus */
 .footer-col a:hover {
-    color: var(--primary-gold); /* Devient doré au survol */
+    color: var(--primary-gold);
 }
 
-/* --- RESPONSIVE (MOBILE) --- */
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
 @media (max-width: 768px) {
-    footer {
-        flex-direction: column; /* On empile les colonnes verticalement */
-        align-items: center;    /* On centre tout */
-        gap: 30px;              /* Espace entre les groupes */
+    /* Hero */
+    main h2 {
+        font-size: 2.5rem;
+        padding-left: 20px;
+        height: 300px;
     }
-    
+
+    /* Recherche */
+    #search {
+        top: 260px;
+        width: 90%;
+    }
+
+    /* Grille */
+    main section {
+        margin-top: 50px;
+        padding: 20px;
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
     .footer-col {
-        width: 100%;           /* Prend toute la largeur sur mobile */
-        text-align: center;    /* Force le centrage sur mobile */
+        width: 100%;
+        text-align: center;
     }
 }
