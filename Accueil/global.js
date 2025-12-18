@@ -59,3 +59,31 @@ if (switchBtn) {
     });
 }
 
+//barre-de-recherche
+const searchInput = document.getElementById('search');
+// On cible spécifiquement les articles qui sont dans la section principale
+const articles = document.querySelectorAll('main section article');
+
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        // 1. On récupère ce que l'utilisateur tape et on le met en minuscule
+        const searchTerm = e.target.value.toLowerCase();
+
+        // 2. On boucle sur chaque carte (article)
+        articles.forEach(article => {
+            // On récupère TOUT le texte de la carte (Titre h3 + Prix p + Liste ul)
+            // .innerText permet de chercher aussi bien dans "Indian Forest" que dans "Pizzeria" ou "Dimanche"
+            const content = article.innerText.toLowerCase();
+
+            // 3. Vérification
+            if (content.includes(searchTerm)) {
+                // Si ça correspond, on affiche (remise à zéro du style display pour reprendre le CSS)
+                article.style.display = ""; 
+            } else {
+                // Sinon, on cache
+                article.style.display = "none";
+            }
+        });
+    });
+}
+
