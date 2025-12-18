@@ -500,7 +500,6 @@ body.darkmode article p {
 }
 
 /* --- LES ICONES DES CARTES --- */
-/* Filtre doré pour les icônes (si tu veux qu'elles restent dorées pour contraster avec le texte blanc) */
 body.darkmode article img {
     filter: brightness(0) saturate(100%) invert(76%) sepia(37%) saturate(698%) hue-rotate(5deg) brightness(92%) contrast(89%);
 }
@@ -552,7 +551,5 @@ body.darkmode main h2 {
     /* On renforce un peu l'ombre du texte pour qu'il ressorte bien sur l'image */
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
-
-
 
 

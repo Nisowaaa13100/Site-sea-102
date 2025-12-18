@@ -12,6 +12,7 @@ closeBtn.addEventListener("click", () => {
 });
 //fin menu hamburger
 
+
 // bouton retour au top
 
 let boutonretour = document.getElementById("bouton");
@@ -57,3 +58,4 @@ if (switchBtn) {
         }
     });
 }
+

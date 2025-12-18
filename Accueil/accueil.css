@@ -1,581 +1,578 @@
 /* ==========================================================================
-   VARIABLES GLOBALES
-   ========================================================================== */
+ VARIABLES GLOBALES
+ ========================================================================== */
 :root {
-    --primary-gold: #d4af37;
-    --secondary-gold: #e5c975;
-    --bg-beige: #f3eadd;
-    --text-dark: #333333;
-    --text-grey: #666666;
-    --white: #ffffff;
-    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ --primary-gold: #d4af37;
+ --secondary-gold: #e5c975;
+ --bg-beige: #f3eadd;
+ --text-dark: #333333;
+ --text-grey: #666666;
+ --white: #ffffff;
+ --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* ==========================================================================
-   RESET
-   ========================================================================== */
+ RESET
+ ========================================================================== */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
 }
 
 body {
-    font-family: var(--font-main);
-    background-color: var(--bg-beige);
-    color: var(--text-dark);
-    overflow-x: hidden;
+ font-family: var(--font-main);
+ background-color: var(--bg-beige);
+ color: var(--text-dark);
+ overflow-x: hidden;
 }
 
 /* ==========================================================================
-   HEADER
-   ========================================================================== */
+ HEADER
+ ========================================================================== */
 header {
-    background-color: var(--white);
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+ background-color: var(--white);
+ height: 70px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: relative;
+ z-index: 100;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: black;
-    letter-spacing: -1px;
+ font-size: 1.8rem;
+ font-weight: 800;
+ color: black;
+ letter-spacing: -1px;
 }
 
 header label {
-    display: none;
+ display: none;
 }
 
 /* Bouton hamburger */
 #openMenu {
-    position: absolute;
-    left: 20px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-dark);
-    padding: 5px;
-    transition: opacity 0.2s ease;
+ position: absolute;
+ left: 20px;
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ cursor: pointer;
+ color: var(--text-dark);
+ padding: 5px;
+ transition: opacity 0.2s ease;
 }
 
 #openMenu:hover {
-    opacity: 0.7;
+ opacity: 0.7;
 }
 
 /* ==========================================================================
-   MENU HAMBURGER
-   ========================================================================== */
+ MENU HAMBURGER
+ ========================================================================== */
 .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 100vh;
-    background: var(--white);
-    padding: 20px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 200;
-    overflow-y: auto;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 300px;
+ height: 100vh;
+ background: var(--white);
+ padding: 20px;
+ box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+ transform: translateX(-100%);
+ transition: transform 0.3s ease;
+ z-index: 200;
+ overflow-y: auto;
 }
 
 .menu.open {
-    transform: translateX(0);
+ transform: translateX(0);
 }
 
 .menu .close {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    float: right;
-    cursor: pointer;
-    color: var(--text-dark);
-    transition: opacity 0.2s ease;
+ background: none;
+ border: none;
+ font-size: 2rem;
+ float: right;
+ cursor: pointer;
+ color: var(--text-dark);
+ transition: opacity 0.2s ease;
 }
 
 .menu .close:hover {
-    opacity: 0.7;
+ opacity: 0.7;
 }
 
 .menu h2 {
-    margin-top: 10px;
-    color: var(--primary-gold);
-    clear: both;
+ margin-top: 10px;
+ color: var(--primary-gold);
+ clear: both;
 }
 
 .menu ul {
-    list-style: none;
-    margin-top: 20px;
+ list-style: none;
+ margin-top: 20px;
 }
 
 .menu li {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 15px 10px;
-    border-bottom: 1px solid #eee;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ position: relative;
+ display: flex;
+ align-items: center;
+ margin-bottom: 20px;
+ padding: 15px 10px;
+ border-bottom: 1px solid #eee;
+ border-radius: 10px;
+ cursor: pointer;
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .menu li:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border-color: var(--secondary-gold);
+ transform: translateY(-3px);
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+ border-color: var(--secondary-gold);
 }
 
 .menu li a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 10;
 }
 
 .menu .icon {
-    color: var(--primary-gold);
-    font-size: 1.2rem;
-    margin-right: 10px;
+ color: var(--primary-gold);
+ font-size: 1.2rem;
+ margin-right: 10px;
 }
 
 .menu .title {
-    font-weight: bold;
-    font-size: 0.9rem;
+ font-weight: bold;
+ font-size: 0.9rem;
 }
 
 .menu .desc {
-    font-size: 0.75rem;
-    color: var(--text-grey);
+ font-size: 0.75rem;
+ color: var(--text-grey);
 }
 
 .menu button {
-    margin-left: auto;
-    background: var(--primary-gold);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: background-color 0.2s ease;
+ margin-left: auto;
+ background: var(--primary-gold);
+ color: white;
+ border: none;
+ padding: 5px 10px;
+ border-radius: 5px;
+ cursor: pointer;
+ font-size: 0.8rem;
+ transition: background-color 0.2s ease;
 }
 
 /* ==========================================================================
-   BARRE DE RECHERCHE
-   ========================================================================== */
+ BARRE DE RECHERCHE
+ ========================================================================== */
 #search {
-    position: absolute;
-    top: 350px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    max-width: 500px;
-    padding: 15px 20px;
-    border-radius: 30px;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    font-size: 1rem;
-    z-index: 10;
-    outline: none;
+ position: absolute;
+ top: 350px;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 60%;
+ max-width: 500px;
+ padding: 15px 20px;
+ border-radius: 30px;
+ border: none;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+ font-size: 1rem;
+ z-index: 10;
+ outline: none;
 }
 
 /* ==========================================================================
-   IMAGE DE FOND
-   ========================================================================== */
+ IMAGE DE FOND
+ ========================================================================== */
 main {
-    position: relative;
-    width: 100%;
+ position: relative;
+ width: 100%;
 }
 
 main h2 {
-    position: relative;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 120px;
-    padding-left: 10%;
-    color: var(--white);
-    font-size: 3.5rem;
-    line-height: 1.1;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-    margin-bottom: 0;
-    overflow: hidden;
+ position: relative;
+ height: 60vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+ padding-bottom: 120px;
+ padding-left: 10%;
+ color: var(--white);
+ font-size: 3.5rem;
+ line-height: 1.1;
+ text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+ margin-bottom: 0;
+ overflow: hidden;
 }
 
 main h2 img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    filter: brightness(0.7);
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ z-index: -1;
+ filter: brightness(0.7);
 }
 /* ==========================================================================
-   CARTES
-   ========================================================================== */
+ CARTES
+ ========================================================================== */
 main section {
-    background-color: var(--white);
-    width: 90%;
-    max-width: 1100px;
-    margin: 60px auto;
-    border-radius: 20px;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+ background-color: var(--white);
+ width: 90%;
+ max-width: 1100px;
+ margin: 60px auto;
+ border-radius: 20px;
+ padding: 40px;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 30px;
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 article {
-    position: relative;
-    border: 1px solid #f0f0f0;
-    border-radius: 10px;
-    padding: 30px 20px;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #fff;
+ position: relative;
+ border: 1px solid #f0f0f0;
+ border-radius: 10px;
+ padding: 30px 20px;
+ text-align: center;
+ transition: transform 0.2s ease, box-shadow 0.2s ease;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ background: #fff;
 }
 
 article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border-color: var(--secondary-gold);
+ transform: translateY(-5px);
+ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+ border-color: var(--secondary-gold);
 }
 
 article a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 10;
 }
 
 article img {
-    max-width: 120px;
-    margin-bottom: 15px;
-    display: block;
+ max-width: 120px;
+ margin-bottom: 15px;
+ display: block;
 }
 
 article h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: var(--text-dark);
+ font-size: 1.2rem;
+ margin-bottom: 10px;
+ color: var(--text-dark);
 }
 
 article p {
-    font-size: 0.9rem;
-    color: var(--text-grey);
-    margin-bottom: 20px;
-    line-height: 1.4;
+ font-size: 0.9rem;
+ color: var(--text-grey);
+ margin-bottom: 20px;
+ line-height: 1.4;
 }
 
 
 /* ==========================================================================
-   FOOTER
-   ========================================================================== */
+ FOOTER
+ ========================================================================== */
 footer {
-    background-color: var(--white);
-    padding: 50px 20px;
-    border-top: 1px solid #eee;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
+ background-color: var(--white);
+ padding: 50px 20px;
+ border-top: 1px solid #eee;
+ display: flex;
+ justify-content: space-around;
+ align-items: flex-start;
+ flex-wrap: wrap;
 }
 
 .footer-col {
-    flex: 1;
-    min-width: 200px;
-    text-align: center;
-    margin-bottom: 20px;
+ flex: 1;
+ min-width: 200px;
+ text-align: center;
+ margin-bottom: 20px;
 }
 
 .footer-col h4 {
-    font-size: 1rem;
-    text-transform: uppercase;
-    color: var(--text-dark);
-    margin-bottom: 20px;
-    font-weight: 800;
-    letter-spacing: 1px;
+ font-size: 1rem;
+ text-transform: uppercase;
+ color: var(--text-dark);
+ margin-bottom: 20px;
+ font-weight: 800;
+ letter-spacing: 1px;
 }
 
 .footer-col ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+ list-style: none;
+ padding: 0;
+ margin: 0;
 }
 
 .footer-col li {
-    margin-bottom: 12px;
+ margin-bottom: 12px;
 }
 
 .footer-col a {
-    text-decoration: none;
-    color: var(--text-grey);
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
+ text-decoration: none;
+ color: var(--text-grey);
+ font-size: 0.9rem;
+ transition: color 0.3s ease;
 }
 
 .footer-col a:hover {
-    color: var(--primary-gold);
+ color: var(--primary-gold);
 }
 
 /* ==========================================================================
-   MOBILE
-   ========================================================================== */
+ MOBILE
+ ========================================================================== */
 @media (max-width: 768px) {
-    /* Hero */
-    main h2 {
-        font-size: 2.5rem;
-        padding-left: 20px;
-        height: 300px;
-    }
+ /* Hero */
+ main h2 {
+ font-size: 2.5rem;
+ padding-left: 20px;
+ height: 300px;
+ }
 
-    /* Recherche */
-    #search {
-        top: 260px;
-        width: 90%;
-    }
+ /* Recherche */
+ #search {
+ top: 260px;
+ width: 90%;
+ }
 
-    /* Grille */
-    main section {
-        margin-top: 50px;
-        padding: 20px;
-        grid-template-columns: 1fr;
-    }
+ /* Grille */
+ main section {
+ margin-top: 50px;
+ padding: 20px;
+ grid-template-columns: 1fr;
+ }
 
-    /* Footer */
-    footer {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
+ /* Footer */
+ footer {
+ flex-direction: column;
+ align-items: center;
+ gap: 30px;
+ }
 
-    .footer-col {
-        width: 100%;
-        text-align: center;
-    }
+ .footer-col {
+ width: 100%;
+ text-align: center;
+ }
 }
 
 
 /* ==========================================================================
-   RETOUR TOP ET THEME SWITCH
-   ========================================================================== */
+ RETOUR TOP ET THEME SWITCH
+ ========================================================================== */
 
 #bouton {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: var(--primary-gold); /* Set a background color */
-  color: var(--white); /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 0; /* Some padding */
-  width: 50px;
-  border-radius: 50%;
-  font-size: 24px;
-  line-height : 50px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
+ display: none; /* Hidden by default */
+ position: fixed; /* Fixed/sticky position */
+ bottom: 20px; /* Place the button at the bottom of the page */
+ right: 30px; /* Place the button 30px from the right */
+ z-index: 99; /* Make sure it does not overlap */
+ border: none; /* Remove borders */
+ outline: none; /* Remove outline */
+ background-color: var(--primary-gold); /* Set a background color */
+ color: var(--white); /* Text color */
+ cursor: pointer; /* Add a mouse pointer on hover */
+ padding: 0; /* Some padding */
+ width: 50px;
+ border-radius: 50%;
+ font-size: 24px;
+ line-height : 50px;
+ text-align: center;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+ transition: all 0.3s ease;
 }
 
 #bouton:hover {
-  background-color: var(--secondary-gold) ;
+ background-color: var(--secondary-gold) ;
 }
 
 /* ==========================================================================
-   BOUTON THEME SWITCH (MODIFIÉ)
-   ========================================================================== */
+ BOUTON THEME SWITCH (MODIFIÉ)
+ ========================================================================== */
 #switch {
-    height: 50px;
-    width: 50px;
-    padding: 0;
-    border-radius: 50%;
-    background-color: var(--primary-gold);
-    border: 2px solid var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001; /* Z-index élevé pour être sûr d'être au-dessus du header */
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+ height: 50px;
+ width: 50px;
+ padding: 0;
+ border-radius: 50%;
+ background-color: var(--primary-gold);
+ border: 2px solid var(--white);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: fixed;
+ top: 20px;
+ right: 20px;
+ z-index: 1001; /* Z-index élevé pour être sûr d'être au-dessus du header */
+ cursor: pointer;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+ transition: all 0.3s ease;
 }
 
 #switch:hover {
-    transform: scale(1.05);
+ transform: scale(1.05);
 }
 
 #switch svg {
-    fill: var(--text-dark);
-    transition: fill 0.3s ease;
+ fill: var(--text-dark);
+ transition: fill 0.3s ease;
 }
 
 #switch svg:last-child {
-    display: none;
+ display: none;
 }
 
 
 body.darkmode #switch {
-    background-color: #2a2a2a;
-    border-color: var(--primary-gold); 
+ background-color: #2a2a2a;
+ border-color: var(--primary-gold); 
 }
 
 
 body.darkmode #switch svg {
-    fill: var(--primary-gold);
+ fill: var(--primary-gold);
 }
 
 
 body.darkmode #switch svg:first-child {
-    display: none;
+ display: none;
 }
 body.darkmode #switch svg:last-child {
-    display: block;
+ display: block;
 }
 
 /* ==========================================================================
-   MODE SOMBRE (TEXTE BLANC)
-   ========================================================================== */
+ MODE SOMBRE (TEXTE BLANC)
+ ========================================================================== */
 
 /* 1. Redéfinition des couleurs principales pour le thème sombre */
 body.darkmode {
-    /* Fond général très foncé (charbon) */
-    --bg-beige: #1a1a1a;
-    /* Les conteneurs deviennent transparents ou de la même couleur que le fond */
-    --white: #1a1a1a;
-    
-    /* ICI : On force le blanc pur pour le texte */
-    --text-dark: #ffffff;
-    --text-grey: #ffffff; 
-    
-    /* Le doré reste le doré pour les bordures */
-    --primary-gold: #d4af37;
+ /* Fond général très foncé (charbon) */
+ --bg-beige: #1a1a1a;
+ /* Les conteneurs deviennent transparents ou de la même couleur que le fond */
+ --white: #1a1a1a;
+ 
+ /* ICI : On force le blanc pur pour le texte */
+ --text-dark: #ffffff;
+ --text-grey: #ffffff; 
+ 
+ /* Le doré reste le doré pour les bordures */
+ --primary-gold: #d4af37;
 }
 
 /* 2. Ajustements structurels pour le mode sombre */
 
 /* Header */
 body.darkmode header {
-    box-shadow: none;
-    border-bottom: 1px solid #333;
+ box-shadow: none;
+ border-bottom: 1px solid #333;
 }
 
 body.darkmode header h1 {
-    color: #ffffff; /* Titre du site en blanc */
+ color: #ffffff; /* Titre du site en blanc */
 }
 
 /* Le conteneur principal de la grille */
 body.darkmode main section {
-    background-color: transparent;
-    box-shadow: none;
+ background-color: transparent;
+ box-shadow: none;
 }
 
 /* --- STYLE DES CARTES (ARTICLES) --- */
 body.darkmode article {
-    background-color: transparent;
-    border: 1px solid var(--primary-gold); /* On garde la bordure dorée pour le style */
-    box-shadow: none;
+ background-color: transparent;
+ border: 1px solid var(--primary-gold); /* On garde la bordure dorée pour le style */
+ box-shadow: none;
 }
 
 body.darkmode article:hover {
-    transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.05); /* Léger fond blanc au survol */
+ transform: translateY(-5px);
+ background-color: rgba(255, 255, 255, 0.05); /* Léger fond blanc au survol */
 }
 
 /* Titres des cartes (H3) EN BLANC */
 body.darkmode article h3 {
-    color: #ffffff; /* Blanc pur */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+ color: #ffffff; /* Blanc pur */
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ font-weight: 600;
 }
 
 /* Paragraphes des cartes EN BLANC */
 body.darkmode article p {
-    color: #ffffff; /* Blanc pur */
-    opacity: 0.8; /* Légère transparence pour ne pas agresser les yeux, mais reste blanc */
+ color: #ffffff; /* Blanc pur */
+ opacity: 0.8; /* Légère transparence pour ne pas agresser les yeux, mais reste blanc */
 }
 
 /* --- LES ICONES DES CARTES --- */
 /* Filtre doré pour les icônes (si tu veux qu'elles restent dorées pour contraster avec le texte blanc) */
 body.darkmode article img {
-    filter: brightness(0) saturate(100%) invert(76%) sepia(37%) saturate(698%) hue-rotate(5deg) brightness(92%) contrast(89%);
+ filter: brightness(0) saturate(100%) invert(76%) sepia(37%) saturate(698%) hue-rotate(5deg) brightness(92%) contrast(89%);
 }
 
 /* --- FOOTER --- */
 body.darkmode footer {
-    background-color: #141414;
-    border-top: 1px solid #333;
+ background-color: #141414;
+ border-top: 1px solid #333;
 }
 
 /* Titres et liens du footer en blanc */
 body.darkmode .footer-col h4,
 body.darkmode .footer-col a {
-    color: #ffffff;
+ color: #ffffff;
 }
 
 body.darkmode .footer-col a:hover {
-    color: var(--primary-gold); /* Petit effet doré au survol du lien uniquement */
+ color: var(--primary-gold); /* Petit effet doré au survol du lien uniquement */
 }
 
 /* --- MENU HAMBURGER --- */
 body.darkmode .menu {
-    background-color: #1a1a1a;
-    border-right: 1px solid var(--primary-gold);
+ background-color: #1a1a1a;
+ border-right: 1px solid var(--primary-gold);
 }
 body.darkmode .menu li {
-    border-bottom: 1px solid #333;
+ border-bottom: 1px solid #333;
 }
 body.darkmode .menu .close,
 body.darkmode .menu .title,
 body.darkmode .menu .desc,
 body.darkmode .menu .icon {
-    color: #ffffff; /* Tout le texte du menu en blanc */
+ color: #ffffff; /* Tout le texte du menu en blanc */
 }
 
 /* Champ de recherche en mode sombre */
 body.darkmode #search {
-    background-color: #2a2a2a; /* Gris foncé SOLIDE (pas de transparence) */
-    color: #ffffff;            /* Texte blanc */
-    border: 1px solid var(--primary-gold);
+ background-color: #2a2a2a; /* Gris foncé SOLIDE (pas de transparence) */
+ color: #ffffff; /* Texte blanc */
+ border: 1px solid var(--primary-gold);
 }
 
 body.darkmode #search::placeholder {
-    color: #bbbbbb;
+ color: #bbbbbb;
 }
 /* Force le grand titre sur l'image à rester blanc en mode sombre */
 body.darkmode main h2 {
-    color: #ffffff;
-    /* On renforce un peu l'ombre du texte pour qu'il ressorte bien sur l'image */
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+ color: #ffffff;
+ /* On renforce un peu l'ombre du texte pour qu'il ressorte bien sur l'image */
+ text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
-
-
-
 
