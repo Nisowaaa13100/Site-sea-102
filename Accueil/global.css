@@ -1,6 +1,4 @@
-/* ==========================================================================
-   VARIABLES GLOBALES
-   ========================================================================== */
+/* VARIABLES GLOBALES*/
 :root {
     --primary-gold: #d4af37;
     --secondary-gold: #e5c975;
@@ -11,9 +9,7 @@
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* ==========================================================================
-   RESET
-   ========================================================================== */
+/* RESET*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,9 +23,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
+/* HEADER */
 header {
     background-color: var(--white);
     height: 70px;
@@ -69,9 +63,7 @@ header label {
     opacity: 0.7;
 }
 
-/* ==========================================================================
-   MENU LATÉRAL (HAMBURGER)
-   ========================================================================== */
+/*MENU HAMBURGER*/
 .menu {
     position: fixed;
     top: 0;
@@ -171,9 +163,7 @@ header label {
     transition: background-color 0.2s ease;
 }
 
-/* ==========================================================================
-   BARRE DE RECHERCHE
-   ========================================================================== */
+/* BARRE DE RECHERCHE*/
 #search {
     position: absolute;
     top: 350px;
@@ -190,9 +180,7 @@ header label {
     outline: none;
 }
 
-/* ==========================================================================
-   IMAGE DE FOND
-   ========================================================================== */
+/*IMAGE DE FOND*/
 main {
     position: relative;
     width: 100%;
@@ -234,9 +222,7 @@ main h3 {
     text-transform: uppercase;
 }
 
-/* ==========================================================================
-   CARTES
-   ========================================================================== */
+/*CARTES*/
 main section {
     width: 90%;
     max-width: 1100px;
@@ -303,9 +289,7 @@ article li {
     text-align: left;
     }
 
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
+/*FOOTER*/
 footer {
     background-color: var(--white);
     padding: 50px 20px;
@@ -353,22 +337,20 @@ footer {
     color: var(--primary-gold);
 }
 
-/* ==========================================================================
-   RETOUR TOP ET THEME SWITCH
-   ========================================================================== */
+/*RETOUR TOP ET THEME SWITCH*/
 
 #bouton {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: var(--primary-gold); /* Set a background color */
-  color: var(--white); /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 0; /* Some padding */
+  display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: var(--primary-gold); 
+  color: var(--white); 
+  cursor: pointer; 
+  padding: 0; 
   width: 50px;
   border-radius: 50%;
   font-size: 24px;
@@ -382,9 +364,7 @@ footer {
   background-color: var(--secondary-gold) ;
 }
 
-/* ==========================================================================
-   BOUTON THEME SWITCH (MODIFIÉ)
-   ========================================================================== */
+/* switch bouton noir*/
 #switch {
     height: 50px;
     width: 50px;
@@ -398,7 +378,7 @@ footer {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1001; /* Z-index élevé pour être sûr d'être au-dessus du header */
+    z-index: 1001;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
@@ -436,26 +416,16 @@ body.darkmode #switch svg:last-child {
     display: block;
 }
 
-/* ==========================================================================
-   MODE SOMBRE (TEXTE BLANC)
-   ========================================================================== */
-
-/* 1. Redéfinition des couleurs principales pour le thème sombre */
+/*MODE SOMBRE*/
 body.darkmode {
-    /* Fond général très foncé (charbon) */
     --bg-beige: #1a1a1a;
-    /* Les conteneurs deviennent transparents ou de la même couleur que le fond */
     --white: #1a1a1a;
-    
-    /* ICI : On force le blanc pur pour le texte */
     --text-dark: #ffffff;
     --text-grey: #ffffff; 
-    
-    /* Le doré reste le doré pour les bordures */
     --primary-gold: #d4af37;
 }
 
-/* 2. Ajustements structurels pour le mode sombre */
+
 
 /* Header */
 body.darkmode header {
@@ -464,7 +434,7 @@ body.darkmode header {
 }
 
 body.darkmode header h1 {
-    color: #ffffff; /* Titre du site en blanc */
+    color: #ffffff; 
 }
 
 /* Le conteneur principal de la grille */
@@ -473,38 +443,37 @@ body.darkmode main section {
     box-shadow: none;
 }
 
-/* --- STYLE DES CARTES (ARTICLES) --- */
 body.darkmode article {
     background-color: transparent;
-    border: 1px solid var(--primary-gold); /* On garde la bordure dorée pour le style */
+    border: 1px solid var(--primary-gold); 
     box-shadow: none;
 }
 
 body.darkmode article:hover {
     transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.05); /* Léger fond blanc au survol */
+    background-color: rgba(255, 255, 255, 0.05); 
 }
 
-/* Titres des cartes (H3) EN BLANC */
+/* Titres des cartes */
 body.darkmode article h3 {
-    color: #ffffff; /* Blanc pur */
+    color: #ffffff; 
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
 }
 
-/* Paragraphes des cartes EN BLANC */
+/* Paragraphes des cartes*/
 body.darkmode article p {
-    color: #ffffff; /* Blanc pur */
-    opacity: 0.8; /* Légère transparence pour ne pas agresser les yeux, mais reste blanc */
+    color: #ffffff; 
+    opacity: 0.8; 
 }
 
-/* --- LES ICONES DES CARTES --- */
+/*LES ICONES DES CARTES*/
 body.darkmode article img {
     filter: brightness(0) saturate(100%) invert(76%) sepia(37%) saturate(698%) hue-rotate(5deg) brightness(92%) contrast(89%);
 }
 
-/* --- FOOTER --- */
+/*FOOTER */
 body.darkmode footer {
     background-color: #141414;
     border-top: 1px solid #333;
@@ -517,10 +486,10 @@ body.darkmode .footer-col a {
 }
 
 body.darkmode .footer-col a:hover {
-    color: var(--primary-gold); /* Petit effet doré au survol du lien uniquement */
+    color: var(--primary-gold);
 }
 
-/* --- MENU HAMBURGER --- */
+/*MENU HAMBURGER*/
 body.darkmode .menu {
     background-color: #1a1a1a;
     border-right: 1px solid var(--primary-gold);
@@ -532,31 +501,25 @@ body.darkmode .menu .close,
 body.darkmode .menu .title,
 body.darkmode .menu .desc,
 body.darkmode .menu .icon {
-    color: #ffffff; /* Tout le texte du menu en blanc */
+    color: #ffffff; 
 }
 
-/* Champ de recherche en mode sombre */
+/* barre de recherche en mode sombre */
 body.darkmode #search {
-    background-color: #2a2a2a; /* Gris foncé SOLIDE (pas de transparence) */
-    color: #ffffff;            /* Texte blanc */
+    background-color: #2a2a2a; 
+    color: #ffffff;  
     border: 1px solid var(--primary-gold);
 }
 
 body.darkmode #search::placeholder {
     color: #bbbbbb;
 }
-/* Force le grand titre sur l'image à rester blanc en mode sombre */
 body.darkmode main h2 {
     color: #ffffff;
-    /* On renforce un peu l'ombre du texte pour qu'il ressorte bien sur l'image */
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
-/* ==========================================================================
-   PAGE SOURCES (SPÉCIFIQUE)
-   ========================================================================== */
-
-/* Ciblage ultra-précis pour ne pas casser les autres pages */
+/* PAGE SOURCES (SPÉCIFIQUE)*/
 #pagesource section {
     display: block;     
     width: 90%;         
@@ -569,14 +532,12 @@ body.darkmode main h2 {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); 
 }
 
-/* On stylise l'intérieur du bloc */
 #pagesource section div {
     background: transparent; 
     padding: 0;
     border: none;
 }
 
-/* On aligne le texte proprement */
 #pagesource h4 {
     margin-top: 20px;
     color: var(--primary-gold);
@@ -592,7 +553,7 @@ body.darkmode main h2 {
     margin-bottom: 10px;
 }
 
-/* --- AJUSTEMENT MODE SOMBRE --- */
+/*AJUSTEMENT MODE SOMBRE */
 body.darkmode #pagesource section {
     background-color: #252525; 
     box-shadow: none;
@@ -602,7 +563,7 @@ body.darkmode #pagesource section {
 .contact-form {
     width: 90%;
     max-width: 600px;
-    margin: -60px auto 60px auto; /* Remonte sur l'image */
+    margin: -60px auto 60px auto;
     background-color: var(--white);
     padding: 40px;
     border-radius: 20px;
@@ -612,7 +573,6 @@ body.darkmode #pagesource section {
     z-index: 20;
 }
 
-/* Style des textes et labels */
 .contact-form label {
     display: block;
     margin-bottom: 8px;
@@ -623,7 +583,7 @@ body.darkmode #pagesource section {
     letter-spacing: 1px;
 }
 
-/* Champs de saisie */
+/* formulaire */
 .contact-form input, 
 .contact-form textarea {
     width: 100%;
@@ -665,7 +625,6 @@ body.darkmode #pagesource section {
     transform: translateY(-2px);
 }
 
-/* Adaptation Mode Sombre pour le formulaire */
 body.darkmode .contact-form {
     background-color: #252525;
 }
@@ -677,32 +636,28 @@ body.darkmode .contact-form textarea {
     color: #ffffff;
 }
 
-/* ==========================================================================
-   VERSION MOBILE : PAGES INTERNES (Snacks, Resto, etc.)
-   ========================================================================== */
+/* VERSION MOBILE  */
 @media screen and (max-width: 768px) {
 
-    /* --- 1. HERO (TITRE & IMAGE) --- */
     main h2 {
-        font-size: 2.5rem; /* On réduit un peu la police (était très grosse) */
+        font-size: 2.5rem; 
         line-height: 1.1;
-        height: 60vh;      /* Hauteur de la zone image */
-        padding-bottom: 100px; /* Espace en bas */
+        height: 60vh;    
+        padding-bottom: 100px; 
         padding-left: 20px;
-        justify-content: center; /* Centre le texte verticalement */
+        justify-content: center; 
     }
 
-    /* --- 2. BARRE DE RECHERCHE --- */
+    /*BARRE DE RECHERCHE */
     #search {
-        /* On la place à 55% de la hauteur de l'écran pour qu'elle soit SOUS le texte */
         top: 52vh; 
         width: 85%;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 50; /* S'assure qu'elle est au-dessus de tout */
+        z-index: 50;
     }
 
-    /* --- 3. CONTENEUR DES CARTES --- */
+    /* CONTENEUR DES CARTES*/
     main section {
         display: flex !important;
         flex-direction: column !important;
@@ -715,7 +670,6 @@ body.darkmode .contact-form textarea {
         border: none;
     }
 
-    /* --- 4. LA CARTE (ARTICLE) --- */
     article {
         display: flex !important;
         flex-direction: column;
@@ -730,17 +684,14 @@ body.darkmode .contact-form textarea {
         padding: 0 !important;
         text-align: center;
         margin: 0;
-        
-        /* IMPORTANT : On désactive le ::after qui faisait le bouton "Voir la fiche" */
     }
     
-    /* On s'assure qu'aucun bouton fantôme n'apparait */
     article::after {
         display: none !important;
         content: none !important;
     }
 
-    /* --- 5. CONTENU DE LA CARTE --- */
+/* CONTENU DE LA CARTE*/
     article img {
         width: 100%;
         height: 200px;
@@ -761,7 +712,7 @@ body.darkmode .contact-form textarea {
         font-size: 1.2rem;
         font-weight: bold;
         color: #333;
-        margin-bottom: 20px; /* Un peu de marge en bas vu qu'il n'y a plus de bouton */
+        margin-bottom: 20px; 
         padding: 0 15px;
     }
 
@@ -772,7 +723,7 @@ body.darkmode .contact-form textarea {
         color: #666;
     }
 
-    /* --- FOOTER & DIVERS --- */
+    /*FOOTER*/
     footer {
         flex-direction: column;
         gap: 30px;
@@ -783,7 +734,6 @@ body.darkmode .contact-form textarea {
         width: 100%;
     }
     
-    /* Adaptation Mode Sombre pour les cartes */
     body.darkmode article {
         background-color: #252525 !important;
         border: 1px solid var(--primary-gold);
