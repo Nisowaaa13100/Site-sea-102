@@ -214,7 +214,6 @@ main h2 {
     overflow: hidden;
 }
 
-/* Style pour l'image de fond qui sera dans le HTML */
 main h2 img {
     position: absolute;
     top: 0;
