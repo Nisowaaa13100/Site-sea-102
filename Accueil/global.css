@@ -593,3 +593,82 @@ body.darkmode #pagesource section {
     background-color: #252525; 
     box-shadow: none;
 }
+
+/* Conteneur du formulaire */
+.contact-form {
+    width: 90%;
+    max-width: 600px;
+    margin: -60px auto 60px auto; /* Remonte sur l'image */
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 20;
+}
+
+/* Style des textes et labels */
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* Champs de saisie */
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+    background-color: #fff;
+}
+
+/* Bouton Envoyer */
+.contact-form button[type="submit"] {
+    width: 100%;
+    background-color: var(--primary-gold);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+    background-color: var(--secondary-gold);
+    transform: translateY(-2px);
+}
+
+/* Adaptation Mode Sombre pour le formulaire */
+body.darkmode .contact-form {
+    background-color: #252525;
+}
+
+body.darkmode .contact-form input,
+body.darkmode .contact-form textarea {
+    background-color: #1a1a1a;
+    border-color: #444;
+    color: #ffffff;
+}
