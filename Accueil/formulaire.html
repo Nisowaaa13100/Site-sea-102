@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>ÉtudiAix – Contact</title>
+    <link rel="stylesheet" href="../global.css">
+    <script type="module" src="../global.js" defer></script>
+    <link rel="icon" href="../favicon.jpg">
+</head>
+
+<body>
+<header>
+    <button id="openMenu">☰</button>
+
+    <aside class="menu">
+        <button class="close" title="Fermeture">×</button>
+        <h2>Aix-Étudiants</h2>
+        <h3>Menu.</h3>
+        <hr>
+
+        <ul>
+            <li>
+                <span class="icon">★</span>
+                <div>
+                    <p class="title">Accueil</p>
+                    <p class="desc">Retour à l'accueil.</p>
+                </div>
+                <a href="../index.html"></a>
+            </li>
+        </ul>
+    </aside>
+
+    <h1>ÉtudiAix</h1>
+</header>
+<main class="contact">
+  <h2>Nous contacter</h2>
+
+    <form action="https://formspree.io/f/xrezzjvo" method="POST" class="contact-form">    <label for="name">Nom</label>
+    <input id="name" name="name" type="text" required>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+
+    <label for="subject">Sujet</label>
+    <input id="subject" name="subject" type="text" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+
+    <button type="submit">Envoyer</button>
+  </form>
+</main>
+<footer>
+    <p>© ÉtudiAix – Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
