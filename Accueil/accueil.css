@@ -536,11 +536,10 @@ body.darkmode main h2 {
 }
 
 /* ==========================================================================
-   VERSION MOBILE : STYLE LISTE AVEC CARTES BLANCHES
+   VERSION MOBILE 
    ========================================================================== */
 @media screen and (max-width: 768px) {
 
-    /* --- HERO & RECHERCHE --- */
     main h2 {
         font-size: 2.2rem;
         padding-left: 20px;
@@ -555,7 +554,6 @@ body.darkmode main h2 {
         transform: translateX(-50%);
     }
 
-    /* --- VIDEO --- */
     .video {
         width: 90%;
         margin: 30px auto 10px auto;
@@ -563,54 +561,43 @@ body.darkmode main h2 {
         height: 0;
     }
 
-    /* --- LISTE DES RUBRIQUES --- */
     
     main section {
         display: flex !important;
         flex-direction: column !important; /* Force la colonne */
-        gap: 15px;              /* AJOUTÉ : Espace entre les boîtes blanches */
+        gap: 15px;             
         padding: 0 20px;
         margin-top: 20px;
         width: 100%;
-        
-        /* Le fond du conteneur devient transparent pour voir les cartes séparées */
         background-color: transparent !important; 
         box-shadow: none;
         border: none;
     }
-
-    /* --- LA CARTE (ARTICLE) --- */
     article {
         display: grid !important;
-        grid-template-columns: 70px 1fr !important; /* Image | Texte */
+        grid-template-columns: 70px 1fr !important; 
         grid-template-rows: auto auto;
         width: 100% !important;
         column-gap: 15px;
-        
         align-items: center;
         text-align: left;
-        
-        /* RESTAURATION DU STYLE "BOÎTE BLANCHE" */
-        background-color: var(--white) !important; /* Fond blanc forcé */
-        padding: 15px;       /* Espace à l'intérieur de la boîte */
-        border-radius: 15px; /* Coins arrondis */
-        border: 1px solid rgba(0,0,0,0.05); /* Bordure légère */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Petite ombre portée */
+        background-color: var(--white) !important; 
+        padding: 15px;       
+        border-radius: 15px; 
+        border: 1px solid rgba(0,0,0,0.05); 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
         margin: 0;
     }
-
-    /* Correction pour le mode sombre (garde le fond foncé de la carte) */
+    
     body.darkmode article {
-        background-color: transparent !important; /* Ou une couleur sombre si tu préfères */
+        background-color: transparent !important; 
         border: 1px solid var(--primary-gold);
     }
 
-    /* Annulation des effets de survol (inutiles sur tactile) */
     article:hover {
         transform: none;
     }
 
-    /* --- CONTENU --- */
     article img {
         grid-column: 1;
         grid-row: 1 / 3;
