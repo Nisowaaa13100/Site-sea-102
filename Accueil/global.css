@@ -588,6 +588,10 @@ body.darkmode main h2 {
     line-height: 1.6;
 }
 
+#pagesource ul li {
+    margin-bottom: 10px;
+}
+
 /* --- AJUSTEMENT MODE SOMBRE --- */
 body.darkmode #pagesource section {
     background-color: #252525; 
