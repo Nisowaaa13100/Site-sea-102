@@ -552,4 +552,44 @@ body.darkmode main h2 {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
+/* ==========================================================================
+   PAGE SOURCES (SPÉCIFIQUE)
+   ========================================================================== */
 
+/* Ciblage ultra-précis pour ne pas casser les autres pages */
+#pagesource section {
+    display: block;     
+    width: 90%;         
+    max-width: 900px;   
+    margin: 40px auto;  
+    background-color: var(--white); 
+    padding: 50px;       
+    border-radius: 40px; 
+    border: 1px solid var(--primary-gold);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); 
+}
+
+/* On stylise l'intérieur du bloc */
+#pagesource section div {
+    background: transparent; 
+    padding: 0;
+    border: none;
+}
+
+/* On aligne le texte proprement */
+#pagesource h4 {
+    margin-top: 20px;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+}
+
+#pagesource p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* --- AJUSTEMENT MODE SOMBRE --- */
+body.darkmode #pagesource section {
+    background-color: #252525; 
+    box-shadow: none;
+}
