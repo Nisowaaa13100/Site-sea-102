@@ -348,7 +348,14 @@ footer {
  padding-left: 20px;
  height: 300px;
  }
-
+ 
+@media (max-width: 768px) {
+    .video {
+        width: 90%;
+        padding-bottom: 50.6%; 
+        margin: 20px auto;
+    }
+}
  /* Recherche */
  #search {
  top: 260px;
@@ -375,6 +382,28 @@ footer {
  }
 }
 
+.video {
+    position: relative;
+    width: 60%;               /* Réduit la largeur à 60% du conteneur */
+    max-width: 800px;         /* Limite la taille maximale sur grand écran */
+    margin: 40px auto;        /* Centre horizontalement et ajoute de l'espace haut/bas */
+    padding-bottom: 33.75%;   /* Ratio 16:9 adapté à la nouvelle largeur (60% de 56.25) */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+    border-radius: 15px;      /* Arrondit les angles comme tes cartes */
+    border: 2px solid var(--primary-gold); /* Ajoute un rappel doré */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 
 /* ==========================================================================
  RETOUR TOP ET THEME SWITCH
