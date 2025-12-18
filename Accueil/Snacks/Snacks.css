@@ -283,6 +283,7 @@ article img {
     object-fit: cover;    
     display: block;
     margin-bottom: 20px; 
+    filter: none !important;
 }
 
 article h3 {
